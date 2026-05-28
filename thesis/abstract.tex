@@ -1,0 +1,55 @@
+\begin{center}
+    {\heiti\sizeThree 摘~~~~~~要}
+\end{center}
+
+\vspace{0.5cm}
+
+\begin{center}
+    {\heiti\sizeThreel \thesisTitle}
+\end{center}
+
+\vspace{0.5cm}
+
+药物分子设计是药物研发的关键环节。传统方法依赖化学家经验和计算模拟,在处理高维化学空间搜索时效率较低、易陷入局部最优。近年来,大语言模型在自然语言处理领域取得突破,展现出强大的语义理解和生成能力,为分子设计带来新思路。
+
+本研究提出LLM与进化算法结合的分子优化框架,用LLM的文本生成能力替代传统变异操作。通过设计自然语言提示词,引导LLM理解分子结构特征和优化目标,生成改进性质的新分子。该方法既利用LLM学到的化学知识,又保留进化算法的全局搜索优势。
+
+我们构建了完整的LLM驱动优化系统,包括分子表示和属性预测、LLM交互接口、多种提示策略、种群管理等核心组件。设计了三种提示策略进行对比实验:基础优化提示、带示例的少样本学习提示、鼓励多样性的探索提示。实验结果表明,多样性鼓励策略在QED优化任务上效果最佳,能有效提升药物相似性分数并保持种群多样性,避免过早收敛。
+
+此外,我们测试了LLM生成的随机性,发现适当提高温度参数能增加多样性,但过高会降低质量,需在探索和利用间平衡。多次独立运行显示方法具有良好稳定性和可重复性。
+
+本研究为LLM在药物分子设计中的应用提供了可行方案,展示了NLP与计算化学交叉融合的可能性。未来可扩展到多目标优化、复杂属性预测及与其他生成模型结合。
+
+\vspace{0.75cm}
+
+\noindent {\heiti\sizeFour 关键词：}{\heiti\sizeFourl 大语言模型；进化算法；分子优化；药物设计；提示工程}
+
+\newpage
+
+\begin{center}
+    {\bfseries\sizeThree Abstract}
+\end{center}
+
+\vspace{0.5cm}
+
+\begin{center}
+    {\bfseries\sizeThreel \thesisTitleENG}
+\end{center}
+
+\vspace{0.5cm}
+
+Drug molecule design is crucial in drug development. Traditional methods rely on chemists' experience and computational simulations, facing low efficiency and local optima in high-dimensional chemical space search. Recently, large language models (LLMs) have achieved breakthroughs in natural language processing, demonstrating strong semantic understanding and generation capabilities, bringing new ideas to molecular design.
+
+This study proposes a molecular optimization framework combining LLMs with evolutionary algorithms, using LLM's text generation to replace traditional mutation operations. By designing natural language prompts, we guide LLMs to understand molecular structures and optimization targets, generating improved molecules. This approach leverages chemical knowledge learned by LLMs while retaining evolutionary algorithms' global search advantages.
+
+We constructed a complete LLM-driven optimization system, including molecular representation and property prediction, LLM interaction interface, multiple prompt strategies, and population management. Three prompt strategies were designed for comparative experiments: basic optimization, few-shot learning with examples, and diversity-encouraging exploration. Experimental results show that the diversity-encouraging strategy achieved the best performance in QED optimization, effectively improving drug-likeness scores while maintaining population diversity and avoiding premature convergence.
+
+Additionally, we analyzed LLM generation randomness, finding that appropriately increasing temperature enhances diversity but excessive temperature reduces quality, requiring balance between exploration and exploitation. Multiple independent runs demonstrate good stability and reproducibility.
+
+This research provides a feasible solution for applying LLMs in drug molecular design, showing the potential of NLP and computational chemistry integration. Future work can extend to multi-objective optimization, complex property prediction, and combination with other generative models.
+
+\vspace{0.75cm}
+
+\noindent {\bfseries\sizeFour Keywords: }{\bfseries\sizeFourl Large Language Model; Evolutionary Algorithm; Molecular Optimization; Drug Design; Prompt Engineering}
+
+\newpage

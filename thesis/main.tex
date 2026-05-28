@@ -1,0 +1,216 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{ctex}  % 中文支持
+\usepackage{geometry}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{setspace}
+\usepackage{indentfirst}
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{cite}
+\usepackage{enumitem}
+\usepackage{chemfig}  % 化学结构式
+\usepackage{tabularx}  % 表格扩展
+\usepackage{titlesec}  % 标题格式控制
+\usepackage{caption}   % 图表标题格式控制
+\usepackage[normalem]{ulem}  % 下划线支持
+\usepackage[unicode=true,colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue,bookmarks=true,bookmarksnumbered=true]{hyperref}
+
+% 页面设置 - 按照湖南大学规范
+\geometry{top=30mm,bottom=25mm,left=30mm,right=20mm,headheight=15pt}
+\linespread{1.625}  % 1.5倍行距
+\setlength{\parindent}{2em}  % 首行缩进
+
+% 页眉页脚 - 按照湖南大学规范
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrule}{
+    \hrule height 1.2pt width\headwidth
+    \vskip 0.6pt
+    \hrule height 0.7pt width\headwidth
+}
+\fancyhead[C]{\zihao{-5} 湖南大学本科生毕业论文}
+\fancyfoot[C]{\zihao{-5} \thepage}
+
+% 封面不显示页码
+\fancypagestyle{noheader}{
+    \fancyhf{}
+    \renewcommand{\headrulewidth}{0pt}
+}
+
+% 定义字体字号命令
+\newcommand{\sizeFive}{\fontsize{10.5pt}{15pt}\selectfont}  % 五号
+\newcommand{\sizeFour}{\fontsize{14pt}{20pt}\selectfont}    % 四号
+\newcommand{\sizeFourl}{\fontsize{12pt}{15pt}\selectfont}   % 小四
+\newcommand{\sizeThree}{\fontsize{16pt}{20pt}\selectfont}   % 三号
+\newcommand{\sizeThreel}{\fontsize{15pt}{20pt}\selectfont}  % 小三
+\newcommand{\sizeTwo}{\fontsize{22pt}{28pt}\selectfont}     % 二号
+\newcommand{\sizeTwol}{\fontsize{18pt}{22pt}\selectfont}    % 小二
+\newcommand{\sizeOne}{\fontsize{26pt}{36pt}\selectfont}    % 一号
+
+% 章节标题格式 - 按照湖南大学规范
+% 章标题:三号黑体
+\titleformat{\chapter}{\heiti\sizeThree}{\thechapter}{1em}{}
+\titlespacing{\chapter}{0pt}{0pt}{2pt}
+
+% 节标题:小四号黑体,段前段后各0.5行(7.5pt)
+\titleformat{\section}{\heiti\sizeFourl}{\thesection}{1em}{}
+\titlespacing{\section}{0pt}{7.5pt}{7.5pt}
+
+% 条标题:小四号黑体,段前段后各0.5行(7.5pt)
+\titleformat{\subsection}{\heiti\sizeFourl}{\thesubsection}{1em}{}
+\titlespacing{\subsection}{0pt}{7.5pt}{7.5pt}
+
+% 款标题:小四号黑体,段前段后各0.5行(7.5pt)
+\titleformat{\subsubsection}{\heiti\sizeFourl}{\thesubsubsection}{1em}{}
+\titlespacing{\subsubsection}{0pt}{7.5pt}{7.5pt}
+
+% 图表标题格式 - 按照湖南大学规范
+% 表格标题:五号黑体加粗,数字和字母为五号Times New Roman加粗
+\DeclareCaptionFont{tableFont}{\bfseries\zihao{5}}
+\captionsetup[table]{
+    font=tableFont,
+    labelfont=tableFont,
+    position=top,           % 表格标题在上方
+    justification=centering,% 居中对齐
+    labelsep=space          % 标签和内容之间空一格
+}
+
+% 插图标题:五号宋体加粗
+\DeclareCaptionFont{figureFont}{\bfseries\zihao{5}}
+\captionsetup[figure]{
+    font=figureFont,
+    labelfont=figureFont,
+    position=bottom,        % 图片标题在下方
+    justification=centering,% 居中对齐
+    labelsep=space          % 标签和内容之间空一格
+}
+
+% 表内文字和附注格式 - 按照湖南大学规范
+% 表内文字:五号宋体
+% 表底附注:小五号宋体
+\newcommand{\tablenote}[1]{{\zihao{-5} #1}}  % 表底附注:小五号
+
+% 插图注释格式 - 按照湖南大学规范
+% 插图注释:小五号宋体
+\newcommand{\figurenote}[1]{{\zihao{-5} #1}}  % 插图注释:小五号
+
+% 引用文献格式 - 按照湖南大学规范
+% 编号用阿拉伯数字置于方括号中,用上标的形式置于所引内容最末句的右上角
+\makeatletter
+\renewcommand{\@cite}[1]{\textsuperscript{\,[#1]}}
+\makeatother
+
+% 目录格式 - 按照湖南大学规范
+% 一级标题(章):小四号黑体
+% 二级及以下标题(节、条):小四号宋体
+% 序号数字:Times New Roman
+\usepackage{tocloft}
+\renewcommand{\cftchapfont}{\heiti\sizeFourl}  % 章标题:小四号黑体
+\renewcommand{\cftsecfont}{\sizeFourl}          % 节标题:小四号宋体
+\renewcommand{\cftsubsecfont}{\sizeFourl}      % 条标题:小四号宋体
+\renewcommand{\cftchappagefont}{\sizeFourl}    % 章页码:小四号
+\renewcommand{\cftsecpagefont}{\sizeFourl}     % 节页码:小四号
+
+% 标题信息
+\newcommand{\thesisTitle}{基于大语言模型的分子进化优化器}
+\newcommand{\thesisTitleENG}{Based on large language model for molecular evolutionary optimization}
+\newcommand{\studentName}{杜森源}
+\newcommand{\studentID}{202208010211}
+\newcommand{\studentMajor}{计算机科学与技术}
+\newcommand{\studentClass}{}
+\newcommand{\studentAcademy}{计算机学院}
+\newcommand{\studentInstructor}{刘益萍副教授}
+\newcommand{\thesisDate}{2026年5月5日}
+
+\begin{document}
+
+% 封面(不编页码)- 采用 Latex-HNUThesisTemplate 样式
+\thispagestyle{noheader}  % 封面不显示页码和页眉
+\begin{titlepage}
+    \centering
+
+    \begin{figure}
+        \centering
+        \includegraphics[width=9.49cm]{figures/hnu_logo_bkg.png}
+    \end{figure}
+
+    \begin{figure}
+        \centering
+        \vspace{-9.49cm}
+        \includegraphics[width=8.01cm, height=2.58cm]{figures/hnu_logo.png}
+    \end{figure}
+
+    \makebox[0pt][c]{
+        \raisebox{-0.5cm}[0pt][0pt]{
+            \fontsize{26pt}{15pt}\selectfont \textbf{HUNAN UNIVERSITY}
+        }
+    }
+
+    \makebox[0pt][c]{
+        \raisebox{-2.5cm}[0pt][0pt]{
+            \fontsize{45pt}{0}\selectfont {本科生毕业论文(设计)}
+        }
+    }
+
+    \vspace{6cm}
+
+    % 论文信息表格(无边框,带下划线)
+    \renewcommand{\arraystretch}{1.5}
+    \begin{tabular}{@{}r@{\hspace{0.5cm}}l@{}}
+        {\fontsize{18pt}{15pt}\selectfont \textbf{论文(设计)题目:}} & {\fontsize{15pt}{15pt}\selectfont \underline{\makebox[9cm][l]{\thesisTitle}}} \\
+        \addlinespace[1.3em]
+        {\fontsize{14pt}{15pt}\selectfont 学~生~姓~名:} & {\fontsize{15pt}{15pt}\selectfont \underline{\makebox[9cm][l]{\studentName}}} \\
+        \addlinespace[1.3em]
+        {\fontsize{14pt}{15pt}\selectfont 学~生~学~号:} & {\fontsize{15pt}{15pt}\selectfont \underline{\makebox[9cm][l]{\studentID}}} \\
+        \addlinespace[1.3em]
+        {\fontsize{14pt}{15pt}\selectfont 专~业~班~级:} & {\fontsize{15pt}{15pt}\selectfont \underline{\makebox[9cm][l]{\studentMajor}}} \\
+        \addlinespace[1.3em]
+        {\fontsize{14pt}{15pt}\selectfont 学~院~名~称:} & {\fontsize{15pt}{15pt}\selectfont \underline{\makebox[9cm][l]{\studentAcademy}}} \\
+        \addlinespace[1.3em]
+        {\fontsize{14pt}{15pt}\selectfont 指~导~老~师:} & {\fontsize{15pt}{15pt}\selectfont \underline{\makebox[9cm][l]{\studentInstructor}}} \\
+    \end{tabular}
+
+    \vspace{2cm}
+    {\fontsize{14pt}{15pt}\selectfont \thesisDate}
+
+\end{titlepage}
+
+% 原创性声明和版权授权书(封面之后,摘要之前)
+\include{copyright}
+\newpage
+
+% 摘要和目录使用罗马数字页码
+\pagenumbering{Roman}  % 大写的罗马数字
+\setcounter{page}{1}
+
+% 摘要
+\include{abstract}
+
+% 目录
+\tableofcontents
+\newpage
+
+% 正文从第1章开始使用阿拉伯数字页码
+\pagenumbering{arabic}  % 阿拉伯数字
+\setcounter{page}{1}
+
+% 正文各章节
+\include{chapter1_introduction}
+\include{chapter2_related_work}
+\include{chapter3_methodology}
+\include{chapter4_experiments}
+\include{chapter5_conclusion}
+
+% 参考文献(已在chapter5中使用thebibliography环境)
+% \bibliographystyle{plain}
+% \bibliography{references}
+
+% 致谢
+\include{acknowledgements}
+
+\end{document}

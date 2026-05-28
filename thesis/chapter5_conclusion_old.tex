@@ -1,0 +1,133 @@
+\chapter{总结与展望}
+
+\section{研究工作总结}
+
+本研究围绕大语言模型在分子进化优化中的应用展开,提出了一种用自然语言提示引导大语言模型生成改进分子的新方法。通过系统的理论分析、方法设计、实验验证,我们得出了一系列有价值的结论和发现。
+
+在理论研究方面,我们深入分析了分子表示、药物属性预测、进化算法、以及大语言模型的相关技术和原理。我们发现,SMILES作为分子的线性表示,虽然简单但是有效,特别适合与大语言模型结合使用。QED作为一个综合性的药物相似性指标,能够很好地反映分子的药物开发潜力,是合适的优化目标。进化算法的全局搜索能力和大语言模型的创造性生成能力具有互补性,两者的结合能够产生更好的优化效果。
+
+在方法设计上,我们构建了一个完整的LLM驱动的分子进化优化系统,包括六个核心模块：分子表示与验证、属性预测、大语言模型交互、提示词模板设计、种群管理、以及结果分析。这个系统采用了模块化的架构,各个模块之间松耦合,便于扩展和维护。我们特别注重了提示词的设计,提出了三种不同层次的提示策略：基础优化提示、带示例的少样本学习提示、以及鼓励多样性的探索提示。这三种策略从简单到复杂,逐步增加提示的信息量和指导性,为后续的实验对比奠定了基础。
+
+在实验验证方面,我们进行了三组主要的实验：一是三种提示策略的对比实验,结果显示多样性策略在最佳QED分数、平均QED分数、以及收敛稳定性上都取得了最好的成绩；二是种群多样性分析,发现多样性策略能够有效地保持种群的多样性,避免早熟收敛；三是随机性测试,研究了温度参数对优化效果的影响,并验证了方法的稳定性和可重复性。实验结果表明,我们提出的方法是有效的,大语言模型确实能够根据提示生成具有改进性质的分子,而且通过合理的提示设计和参数配置,可以显著提升优化的效果。
+
+总的来说,本研究的主要贡献体现在以下几个方面：
+
+一是提出了一种新颖的分子优化方法,用大语言模型替代传统进化算法中的变异算子。这种方法充分利用了大语言模型在大规模语料库上学到的化学知识,不需要专门的训练,就可以完成分子优化的任务。这为降低AI辅助药物设计的门槛提供了一种可行的方案。
+
+二是设计了多种提示策略,系统地研究了提示词对优化效果的影响。我们发现,鼓励多样性的提示策略能够全面提升优化的质量和稳定性,这是一个重要的发现,对于指导实际应用具有参考价值。
+
+三是实现了完整的开源系统,所有的代码都已经公开,便于其他研究者复现和扩展。系统的设计充分考虑了实用性和可扩展性,可以方便地适配不同的模型、属性、以及优化目标。
+
+四是进行了全面的实验分析,不仅验证了方法的有效性,还深入地探讨了多样性、随机性等关键因素的影响机制。这些分析为理解大语言模型在分子优化中的行为提供了有益的洞察。
+
+\section{研究的不足之处}
+
+尽管本研究取得了一定的成果,但是我们也清醒地认识到,工作中还存在一些不足和局限,需要在未来的研究中加以改进和完善。
+
+一是实验规模相对较小。我们只使用了三个初始分子,种群规模也只有20,进化代数设置为20代。这样的设置虽然便于快速完成实验,但是可能无法充分展现方法的潜力。在更大规模的数据集和更长的进化过程中,方法的表现如何,还需要进一步的验证。
+
+二是优化的目标比较单一。我们只优化了QED这一个属性,而实际的药物设计需要考虑多个属性的平衡,如生物活性、选择性、毒性、药代动力学性质等。多目标优化是一个更具挑战性的问题,需要设计更复杂的提示策略和评价机制,这是我们未来工作的重点方向之一。
+
+三是缺乏与传统方法的直接对比。虽然我们引用了文献中的数据来进行定性的比较,但是没有实现一个传统的遗传算法作为基线,进行公平的定量对比。这使得我们难以准确地评估新方法相对于传统方法的优势有多大。在未来的工作中,我们会补充这个对比实验,给出更有说服力的结果。
+
+四是大语言模型的选择比较有限。我们只使用了Qwen2.5-7B这一个模型,没有尝试其他模型(如LLaMA、Mistral、GPT-4等)的表现。不同的模型可能在化学知识的掌握、生成的质量、以及推理的能力上存在差异,系统性地比较这些模型的性能,可以帮助我们选择最适合的模型,或者发现模型的共性和特性。
+
+五是分子有效率的提升空间还很大。目前大语言模型生成的SMILES中,有20\%-30\%是无效的,这浪费了计算资源。虽然我们通过后处理的验证和过滤保证了最终种群的质量,但是如果能够在生成阶段就提高有效率,会大大提升整体的效率。这可能需要改进提示词的设计,或者引入额外的约束和引导。
+
+六是对生成结果的可解释性研究不够。大语言模型为什么会生成某个特定的分子,它背后的推理过程是什么,这些问题我们还没有深入探讨。可解释性对于建立用户对AI系统的信任非常重要,特别是在药物设计这样的高风险领域。未来可以考虑引入注意力可视化、提示词归因分析等技术,来增强方法的可解释性。
+
+\section{未来工作展望}
+
+基于本研究的成果和不足,我们对未来的研究方向提出以下几点展望：
+
+一是扩展到多目标优化。如前所述,实际的药物设计需要同时考虑多个属性,这是一个多目标优化的问题。我们可以借鉴多目标进化算法的思想,如NSGA-II、MOEA/D等,设计相应的提示策略和选择机制,让大语言模型能够生成在多个属性上都表现优秀的分子。这需要解决属性之间的权衡问题,以及如何用自然语言表达多目标的需求。
+
+二是引入主动学习和人类反馈。目前的系统是全自动的,没有人类的参与。但是在实际的药物设计中,化学家的经验和直觉是非常重要的。我们可以设计一个人机协作的框架,让化学家能够对生成的分子进行评价和筛选,然后把这些反馈作为额外的信号,引导大语言模型的生成。这种主动学习的方式能够把人类的专业知识与AI的计算能力结合起来,产生更好的结果。
+
+三是探索更大的语言模型和专门的化学模型。随着技术的发展,出现了越来越多的大语言模型,包括通用模型和专门针对化学领域训练的模型。我们可以系统地比较这些模型在分子优化任务上的表现,找出最适合的模型。另外,也可以考虑对通用模型进行化学领域的微调,让它更好地适应我们的任务。
+
+四是提高生成的效率和质量。可以从多个角度入手：一是优化提示词,让模型更容易理解任务,生成更有效的分子；二是引入后处理修正,对生成的SMILES进行自动修复,提高有效率；三是使用更快的推理引擎,如vLLM、TensorRT-LLM等,加速模型的推理过程；四是引入缓存机制,避免重复计算相同的分子。
+
+五是应用到真实的药物发现项目中。目前的研究还是在基准测试和小规模实验上进行的,未来的目标是把方法应用到真实的药物发现项目中,如针对某个特定的疾病靶点,设计新的候选药物。这需要与制药公司或研究机构合作,获取真实的数据和需求,并在实际的场景中验证方法的价值。
+
+六是开展更深入的理论研究。目前我们的工作主要是实证性的,缺乏深入的理论分析。未来可以研究大语言模型在分子优化中的工作机制,如它到底学到了什么样的化学知识,它是如何进行推理和生成的,提示词是如何影响它的行为的等。这些理论问题的解答,能够帮助我们更好地理解和改进方法。
+
+七是探索与其他生成模型的结合。除了大语言模型,还有很多其他的分子生成模型,如变分自编码器(VAE)、生成对抗网络(GAN)、扩散模型(Diffusion Model)等。这些模型各有优势,可以考虑把它们与大语言模型结合起来,发挥各自的长处。比如,可以用VAE来生成初始的分子,然后用大语言模型进行优化；或者用大语言模型来生成提示,指导扩散模型的采样过程。
+
+总的来说,大语言模型在分子设计和药物发现领域的应用前景非常广阔,还有很多值得探索的方向。我们希望本研究能够为这个领域的发展贡献一份力量,也期待更多的研究者加入到这个 exciting 的研究方向中来,共同推动AI辅助药物设计的进步。
+
+\newpage
+
+\bibliographystyle{plain}
+\begin{thebibliography}{99}
+
+\bibitem{weininger1988smiles}
+Weininger D. SMILES, a chemical language and information system. 1. Introduction to methodology and encoding rules[J]. Journal of Chemical Information and Computer Sciences, 1988, 28(1): 31-36.
+
+\bibitem{bickerton2012qed}
+Bickerton G R, Paolini G V, Besnard J, et al. Quantifying the chemical beauty of drugs[J]. Nature Chemistry, 2012, 4(2): 90-98.
+
+\bibitem{vaswani2017attention}
+Vaswani A, Shazeer N, Parmar N, et al. Attention is all you need[C]//Advances in Neural Information Processing Systems. 2017: 5998-6008.
+
+\bibitem{brown2020language}
+Brown T, Mann B, Ryder N, et al. Language models are few-shot learners[C]//Advances in Neural Information Processing Systems. 2020: 1877-1901.
+
+\bibitem{touvron2023llama}
+Touvron H, Lavril T, Wang S, et al. LLaMA: Open and efficient foundation language models[J]. arXiv preprint arXiv:2302.13971, 2023.
+
+\bibitem{liu2023llm}
+Liu S, Chen C, Qu X, Tang K, Ong Y-S. Large Language Models as Evolutionary Optimizers[J]. arXiv preprint arXiv:2310.19046, 2023.
+
+\bibitem{reinhart2024llm}
+Reinhart W F, Statt A. Large language models design sequence-defined macromolecules via evolutionary optimization[J]. npj Computational Materials, 2024, 10: 262.
+
+\bibitem{brahmachary2024llm}
+Brahmachary S, et al. Large language model-based evolutionary optimizer[J]. ScienceDirect, 2024.
+
+\bibitem{wang2025multi}
+Wang Y, et al. Multi-agent large language models as evolutionary optimizers[J]. ScienceDirect, 2025.
+
+\bibitem{zhang2024optimizing}
+Zhang X, et al. Optimizing Molecular Design Using Evolutionary Algorithms and Deep Learning[J]. Nature Machine Intelligence, 2024, 6(8): 567-578.
+
+\bibitem{zhang2025survey}
+Zhang Y. A Systematic Survey on Large Language Models for Evolutionary Optimization: From Modeling to Solving[J]. arXiv preprint arXiv:2509.08269, 2025.
+
+\bibitem{wang2025when}
+Wang C, Zhao J, Jiao L, Li L, Liu F, Yang S. When Large Language Models Meet Evolutionary Algorithms: Potential Enhancements and Challenges[J]. Research, 2025. DOI: 10.34133/research.0646.
+
+\bibitem{yang2024llm}
+Yang C, Wang X, Lu J, Liu W, Flores R, Tai C, Su Y. Large Language Models as Optimizers[C]//International Conference on Learning Representations (ICLR). 2024.
+
+\bibitem{yoshikawa2025lico}
+Yoshikawa N, Skwark M J, Normales A, Khurana S. LICO: Large Language Models for In-Context Molecular Optimization[C]//ICLR 2025 Poster. 2025.
+
+\bibitem{ran2025exllm}
+Ran N. ExLLM: Experience-Enhanced LLM Optimization for Molecular Design and Beyond[J]. arXiv preprint arXiv:2502.12845, 2025.
+
+\bibitem{flam2025small}
+Flam-Shepherd D, Zhu K, Aspuru-Guzik A. Small Molecule Optimization with Large Language Models[C]//Submitted to ICLR 2025. 2025.
+
+\bibitem{gallidabino2025integrating}
+Gallidabino F, Comoglio C, Etheve L. Integrating genetic algorithms and language models for enhanced enzyme design[J]. Briefings in Bioinformatics, 2025, 26(1): bbae675.
+
+\bibitem{ishida2025large}
+Ishida S, Sato T, Honma T, Terayama K. Large language models open new way of AI-assisted molecule design for chemists[J]. Journal of Cheminformatics, 2025, 17: 36.
+
+\bibitem{schwaller2019molecular}
+Schwaller P, Gaudin T, Lanyi D, et al. "Found in Translation": predicting outcomes of complex organic chemistry reactions using neural sequence-to-sequence models[J]. Chemical Science, 2018, 9(28): 6091-6098.
+
+\bibitem{chithrananda2020chemberta}
+Chithrananda S, Grand G, Ramsundar B. ChemBERTa: Large-scale self-supervised pretraining for molecular property prediction[J]. arXiv preprint arXiv:2010.09885, 2020.
+
+\bibitem{taylor2022galactica}
+Taylor R, Kardas M, Cucurull G, et al. Galactica: A large language model for science[J]. arXiv preprint arXiv:2211.09085, 2022.
+
+\bibitem{landrum2013rdkit}
+Landrum G. RDKit: Open-source cheminformatics[R]. 2013.
+
+\bibitem{holland1992genetic}
+Holland J H. Genetic algorithms[J]. Scientific American, 1992, 267(1): 66-73.
+
+\end{thebibliography}
