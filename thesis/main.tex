@@ -135,17 +135,12 @@
 \thispagestyle{noheader}  % 封面不显示页码和页眉
 \begin{titlepage}
     \centering
-
-    \begin{figure}
-        \centering
-        \includegraphics[width=9.49cm]{figures/hnu_logo_bkg.png}
-    \end{figure}
-
-    \begin{figure}
-        \centering
-        \vspace{-9.49cm}
-        \includegraphics[width=8.01cm, height=2.58cm]{figures/hnu_logo.png}
-    \end{figure}
+    
+    % Logo图片 - 直接使用includegraphics，不使用figure环境
+    \includegraphics[width=9.49cm]{figures/hnu_logo_bkg.png}
+    
+    \vspace{-8cm}
+    \includegraphics[width=8.01cm, height=2.58cm]{figures/hnu_logo.png}
 
     \makebox[0pt][c]{
         \raisebox{-0.5cm}[0pt][0pt]{
@@ -159,25 +154,25 @@
         }
     }
 
-    \vspace{6cm}
+    \vspace{4.5cm}
 
     % 论文信息表格(无边框,带下划线)
-    \renewcommand{\arraystretch}{1.5}
+    \renewcommand{\arraystretch}{1.3}
     \begin{tabular}{@{}r@{\hspace{0.5cm}}l@{}}
         {\fontsize{18pt}{15pt}\selectfont \textbf{论文(设计)题目:}} & {\fontsize{15pt}{15pt}\selectfont \underline{\makebox[9cm][l]{\thesisTitle}}} \\
-        \addlinespace[1.3em]
+        \addlinespace[1em]
         {\fontsize{14pt}{15pt}\selectfont 学~生~姓~名:} & {\fontsize{15pt}{15pt}\selectfont \underline{\makebox[9cm][l]{\studentName}}} \\
-        \addlinespace[1.3em]
+        \addlinespace[1em]
         {\fontsize{14pt}{15pt}\selectfont 学~生~学~号:} & {\fontsize{15pt}{15pt}\selectfont \underline{\makebox[9cm][l]{\studentID}}} \\
-        \addlinespace[1.3em]
+        \addlinespace[1em]
         {\fontsize{14pt}{15pt}\selectfont 专~业~班~级:} & {\fontsize{15pt}{15pt}\selectfont \underline{\makebox[9cm][l]{\studentMajor}}} \\
-        \addlinespace[1.3em]
+        \addlinespace[1em]
         {\fontsize{14pt}{15pt}\selectfont 学~院~名~称:} & {\fontsize{15pt}{15pt}\selectfont \underline{\makebox[9cm][l]{\studentAcademy}}} \\
-        \addlinespace[1.3em]
+        \addlinespace[1em]
         {\fontsize{14pt}{15pt}\selectfont 指~导~老~师:} & {\fontsize{15pt}{15pt}\selectfont \underline{\makebox[9cm][l]{\studentInstructor}}} \\
     \end{tabular}
 
-    \vspace{2cm}
+    \vspace{1.5cm}
     {\fontsize{14pt}{15pt}\selectfont \thesisDate}
 
 \end{titlepage}
