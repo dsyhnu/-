@@ -1,7 +1,6 @@
 \documentclass[12pt,a4paper]{report}
-\usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
-\usepackage{ctex}  % 中文支持
+\usepackage{fontspec}  % 字体配置包（xelatex必需）
+\usepackage[UTF8]{ctex}  % 中文支持，使用默认字体集
 \usepackage{geometry}
 \usepackage{amsmath}
 \usepackage{graphicx}
@@ -128,6 +127,9 @@
 \newcommand{\thesisDate}{2026年5月5日}
 
 \begin{document}
+
+% 设置默认正文字体为小4号宋体（按照湖南大学规范）
+\fontsize{12pt}{19.5pt}\selectfont  % 小4号，1.5倍行距
 
 % 封面(不编页码)- 采用 Latex-HNUThesisTemplate 样式
 \thispagestyle{noheader}  % 封面不显示页码和页眉
