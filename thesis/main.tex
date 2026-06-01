@@ -41,6 +41,18 @@
     \renewcommand{\headrulewidth}{0pt}
 }
 
+% 修改 chapter 的 plain 样式，使其也显示页眉
+\fancypagestyle{plain}{
+    \fancyhf{}
+    \renewcommand{\headrule}{
+        \hrule height 1.2pt width\headwidth
+        \vskip 0.6pt
+        \hrule height 0.7pt width\headwidth
+    }
+    \fancyhead[C]{\zihao{-5} 湖南大学本科生毕业论文}
+    \fancyfoot[C]{\zihao{-5} \thepage}
+}
+
 % 定义字体字号命令
 \newcommand{\sizeFive}{\fontsize{10.5pt}{15pt}\selectfont}  % 五号
 \newcommand{\sizeFour}{\fontsize{14pt}{20pt}\selectfont}    % 四号
@@ -185,7 +197,8 @@
 % 摘要
 \include{abstract}
 
-% 目录
+% 目录（确保使用fancy样式显示页眉）
+\pagestyle{fancy}
 \tableofcontents
 \newpage
 
